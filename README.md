@@ -19,7 +19,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Bankist](bankist-isaactangky.netlify.app)
+- Live Site URL: [Bankist](https://bankist-isaactangky.netlify.app)
 
 ## My process
 
