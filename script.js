@@ -13,7 +13,7 @@ const btnScrollTo = document.querySelector('.btn--scroll-to');
 const tabsContainer = document.querySelector('.operations__tab-container');
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContent = document.querySelectorAll('.operations__content');
-
+// Modal Display
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove('hidden');
@@ -35,6 +35,8 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+/////////////////////////////////////////////
+// Cookie Bar
 const header = document.querySelector('.header');
 const message = document.createElement('div');
 message.classList.add('cookie-message');
@@ -42,6 +44,11 @@ message.textContent =
   'We use cookies for improved functionality and analytics.';
 message.innerHTML = `message.textContent =
 'We use cookies for improved functionality and analytics.' <button class="btn btn--close-cookie">Got it!</button>`;
+// Style
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 40 + 'px';
 
 // header.prepend(message);
 header.append(message);
@@ -51,12 +58,8 @@ document
   .addEventListener('click', function () {
     message.remove();
   });
-// Style
-message.style.backgroundColor = '#37383d';
-message.style.width = '120%';
-message.style.height =
-  Number.parseFloat(getComputedStyle(message).height, 10) + 40 + 'px';
-
+//////////////////////////////////////////
+// Learn More button
 btnScrollTo.addEventListener('click', function (e) {
   // const s1coords = section1.getBoundingClientRect();
   // console.log(s1coords);
@@ -73,11 +76,12 @@ btnScrollTo.addEventListener('click', function (e) {
 
 //////////////////////////////////////
 // Page navigation
+// Event Delegation
 // 1. Add event listener to common parent
-// 2. Determin what element originated the event
+// 2. Determining what element originated the event
 const navLinks = document.querySelector('.nav__links');
 navLinks.addEventListener('click', function (e) {
-  e.preventDefault();
+  e.preventDefault(); // same effect can be achieve by using CSS only
   const target = e.target;
 
   // Match strategy
@@ -107,8 +111,8 @@ tabsContainer.addEventListener('click', function (e) {
   );
   targetContent.classList.add('operations__content--active');
 });
-
-// Nav fade animation
+///////////////////////////////////////////
+// Nav hover fade animation
 const nav = document.querySelector('.nav');
 const handlerHover = function (e) {
   if (e.target.classList.contains('nav__link')) {
@@ -166,7 +170,7 @@ const revealSection = function (entries, observer) {
   const [entry] = entries;
   if (!entry.isIntersecting) return;
   entry.target.classList.remove('section--hidden');
-  observer.unobserve(entry.target);
+  observer.unobserve(entry.target); // unobserve to reduce js works on the page
 };
 const sectionObserver = new IntersectionObserver(revealSection, {
   root: null,
